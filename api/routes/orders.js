@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+// const mongooes=require('mongoose');
+// const Order=require('../models/order');
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
@@ -8,6 +10,13 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+
+    // const order=new Order({
+    //     _id:mongooes.Types.ObjectId(),
+    //     quantity:req.body.quantity,
+
+    // }) 
+
     const order={
         productId:req.body.productId,
         orderId:req.body.orderId

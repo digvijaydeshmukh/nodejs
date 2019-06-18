@@ -5,8 +5,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://root:' + process.env.MONGO_ATLAS_PW + '@node-rest-wwt7d.mongodb.net/test?retryWrites=true&w=majority',{ useNewUrlParser: true })
+mongoose.connect('mongodb+srv://root:' + process.env.MONGO_ATLAS_PW + '@node-rest-wwt7d.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
 
+mongoose.Promise=global.Promise;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }))

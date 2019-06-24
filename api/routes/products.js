@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router()
 const mongoose = require('mongoose')
 const Product = require('../models/product')
+// const multer=require('multer')
+// const upload=multer({dest:'/uploads/'})
 
 router.get('/', (req, res, next) => {
     Product.find().select("name price _id").exec().then(docs => {

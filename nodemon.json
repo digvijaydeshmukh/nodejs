@@ -1,5 +1,11 @@
 {
+<<<<<<< HEAD
     "env": {
         "MONGO_ATLAS_PW": "root"
+=======
+    "env":{
+        "MONGO_ATLAS_PW":"root",
+        "JWT_KEY":"secret"
+>>>>>>> cd8f721bf18d3c7a91eda9c2f53a75243e447032
     }
 }

@@ -26,11 +26,11 @@ app.use((req, res, next) => {
 const userRoutes = require('./api/routes/users')
 const productRoutes = require('./api/routes/products')
 const orderRoutes = require('./api/routes/orders')
+const studentRourtes=require('./api/routes/student')
 app.use('/user', userRoutes)
 app.use('/products', productRoutes)
 app.use('/orders', orderRoutes)
-
-
+app.use('/student',studentRourtes)
 app.use((req, res, next) => {
     const error = new Error("Not Found");
     error.status = 404;

@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const mongooes = require('mongoose');
 const Order = require('../models/order');
-const Product=require('../models/product')
+const Product = require('../models/product')
 router.get('/', (req, res, next) => {
-    Order.find().select("product quantity _id").populate('product','name').exec().then(docs => {
+    Order.find().select("product quantity _id").populate('product', 'name').exec().then(docs => {
         console.log(docs)
-        if(!order){
+        if (!order) {
             return res.status(404).json({
-                message:"orders not found"
+                message: "orders not found"
             })
         }
 
@@ -37,36 +37,36 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    Product.findById(req.body.productId).then(product=>{
-        if(!product){
+    Product.findById(req.body.productId).then(product => {
+        if (!product) {
             return releaseEvents.status(404).json({
-                message:'Product Not Found'
+                message: 'Product Not Found'
             })
         }
         const order = new Order({
             _id: mongooes.Types.ObjectId(),
             quantity: req.body.quantity,
-            product: req.body.productId 
+            product: req.body.productId
         });
         return order.save()
     }).then(result => {
         console.log(result)
         res.status(201).json({
-            message:"order created",
-            createOrder:{
-                _id:result._id,
-                productId :result.product,
-                quantity:result.quantity           
+            message: "order created",
+            createOrder: {
+                _id: result._id,
+                productId: result.product,
+                quantity: result.quantity
             },
-            request:{
-                type:'POST',
-                'url':'http://localhost:3000/orders/' + result._id
+            request: {
+                type: 'POST',
+                'url': 'http://localhost:3000/orders/' + result._id
             }
         });
-    }).catch(err=>{
+    }).catch(err => {
         res.status(500).json({
-            message:"Product Not Found",
-            error:err
+            message: "Product Not Found",
+            error: err
         })
     })
 
@@ -96,7 +96,7 @@ router.get('/:orderId', (req, res, next) => {
             console.log(err);
             res.status(500).json({ error: err })
         })
-    
+
 })
 router.delete('/:orderId', (req, res, next) => {
     const id = req.params.orderId;

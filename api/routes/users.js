@@ -7,7 +7,7 @@ const User = require('../models/user')
 
 router.post('/signup', (req, res, next) => {
     User.find({ email: req.body.email }).exec().then(user => {
-        if (user.length>1) {
+        if (user.length > 1) {
             return res.status(409).json({
                 message: "user alerady exists"
             })
